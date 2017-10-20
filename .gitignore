@@ -1,0 +1,16 @@
+screenshots
+target
+.project
+.classpath
+.settings
+*.iml
+.idea
+.DS_Store
+.metadata
+.externalToolBuilders
+.cache
+.springBeans
+*.log
+*.iws
+*.ipr
+.clover
