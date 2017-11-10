@@ -1,13 +1,8 @@
 package com.n11.bau;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.List;
 
@@ -65,31 +60,24 @@ public class FirstTest extends BaseTest {
     @Test
     public void shouldAddToFavorites() {
         String keyword = "adidas";
+
         HomePage homePage = new HomePage(driver);
         LoginPage loginPage = homePage.clickLogin();
         homePage = loginPage.login();
 
-        homePage.search(keyword);
+        SearchResultPage searchResultPage = homePage.search(keyword);
+        WebElement followBtn = searchResultPage.addFirstProductToFavorites();
 
-        WebElement followBtn = driver.findElement(By.className("followBtn"));
-        followBtn.click();
-//        driver.findElements(By.className("followBtn")).get(0).click();
-//        driver.findElement(By.xpath("//*[@class='textImg followBtn']")).click();
-//        driver.findElement(By.xpath("//*[contains(@class, 'followBtn'])")).click();
-//        driver.findElement(By.cssSelector("#view .column .followBtn")).click();
-        String classAttributes = followBtn.getAttribute("class");
+        PageUtils utils = new PageUtils(driver);
+        String classAttributes = utils.getAttributes(followBtn, "class");
         assertTrue(classAttributes.contains("ok"));
 
-        driver.get("https://www.n11.com/hesabim/favorilerim");
-        List<WebElement> products = driver.findElements(By.cssSelector("#view .column .productName"));
+        MyFavoritesPage favoritesPage = new MyFavoritesPage(driver);
+        utils.goTo(favoritesPage.url);
 
-        Boolean isProductExist = false;
-        for (WebElement product : products) {
-            isProductExist = product.getText().contains(keyword);
-            if (isProductExist) {
-                break;
-            }
-        }
+
+        List<WebElement> products = favoritesPage.getProducts();
+        Boolean isProductExist = favoritesPage.isProductExist(keyword, products);
 
         assertTrue("When a buyer adds a product to favorites", isProductExist);
     }
