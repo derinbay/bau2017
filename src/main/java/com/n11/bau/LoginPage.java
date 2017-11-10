@@ -7,14 +7,18 @@ public class LoginPage {
 
     WebDriver driver;
 
+    By email = By.id("email");
+    By password = By.id("password");
+    By loginButton = By.id("loginButton");
+
     public LoginPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    public HomePage login() {
-        driver.findElement(By.id("email")).sendKeys("bau@bau.com");
-        driver.findElement(By.id("password")).sendKeys("123qwe");
-        driver.findElement(By.id("loginButton")).click();
+    public HomePage login(Buyer buyer) {
+        driver.findElement(email).sendKeys(buyer.getEmail());
+        driver.findElement(password).sendKeys(buyer.getPassword());
+        driver.findElement(loginButton).click();
 
         return new HomePage(driver);
     }
