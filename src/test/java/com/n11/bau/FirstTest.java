@@ -53,7 +53,7 @@ public class FirstTest extends BaseTest {
 
         homePage.search(keyword);
 
-        List<WebElement> productList = driver.findElements(By.cssSelector("#view .productName"))
+        List<WebElement> productList = driver.findElements(By.cssSelector("#view .productName"));
 
         for (WebElement product : productList) {
             String productTitle = product.getText().toLowerCase();
