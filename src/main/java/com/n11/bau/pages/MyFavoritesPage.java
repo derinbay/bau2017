@@ -1,4 +1,4 @@
-package com.n11.bau;
+package com.n11.bau.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -6,13 +6,16 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class MyFavoritesPage {
+public class MyFavoritesPage extends PageUtils {
 
-    WebDriver driver;
+    public String getUrl() {
+        return url;
+    }
+
     String url = "https://www.n11.com/hesabim/favorilerim";
 
     public MyFavoritesPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public List<WebElement> getProducts() {

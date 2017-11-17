@@ -1,4 +1,4 @@
-package com.n11.bau;
+package com.n11.bau.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -25,9 +25,5 @@ public class SearchResultPage {
         followBtn.click();
 
         return followBtn;
-//        driver.findElement(By.className("followBtn")).click();
-//        driver.findElement(By.xpath("//*[@class='textImg followBtn']")).click();
-//        driver.findElement(By.xpath("//*[contains(@class, 'followBtn'])")).click();
-//        driver.findElement(By.cssSelector("#view .column .followBtn")).click();
     }
 }

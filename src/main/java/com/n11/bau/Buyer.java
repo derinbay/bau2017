@@ -1,5 +1,7 @@
 package com.n11.bau;
 
+import com.n11.bau.pages.HomePage;
+import com.n11.bau.pages.LoginPage;
 import org.openqa.selenium.WebDriver;
 
 public class Buyer {

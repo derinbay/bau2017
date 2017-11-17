@@ -1,37 +1,25 @@
-package com.n11.bau;
+package com.n11.bau.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class HomePage {
+public class PageUtils {
 
     WebDriver driver;
 
-    public HomePage(WebDriver driver) {
+    public PageUtils(WebDriver driver) {
         this.driver = driver;
     }
 
-    public LoginPage clickLogin() {
-        WebElement loginButton = driver.findElement(By.className("btnSignIn"));
-        loginButton.click();
-
-        LoginPage loginPage = new LoginPage(driver);
-        return loginPage;
+    public String getAttributes(WebElement element, String attribute) {
+        return element.getAttribute(attribute);
     }
 
-    public String getUserName() {
-        return driver.findElement(By.className("username")).getText();
-    }
-
-    public SearchResultPage search(String keyword) {
-        type(By.id("searchData"), keyword);
-        click(By.className("searchBtn"));
-
-        return new SearchResultPage(driver);
+    public void goTo(String url) {
+        driver.get(url);
     }
 
     public void type(By byLocator, String keyword) {
@@ -52,5 +40,9 @@ public class HomePage {
     public void waitForElement(WebElement element, int timeOutInSeconds) {
         WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
         wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public String getText(By byLocator) {
+        return driver.findElement(byLocator).getText();
     }
 }

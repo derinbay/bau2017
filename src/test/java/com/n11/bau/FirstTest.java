@@ -1,5 +1,9 @@
 package com.n11.bau;
 
+import com.n11.bau.pages.HomePage;
+import com.n11.bau.pages.MyFavoritesPage;
+import com.n11.bau.pages.PageUtils;
+import com.n11.bau.pages.SearchResultPage;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -69,7 +73,7 @@ public class FirstTest extends BaseTest {
         assertTrue(classAttributes.contains("ok"));
 
         MyFavoritesPage favoritesPage = new MyFavoritesPage(driver);
-        utils.goTo(favoritesPage.url);
+        utils.goTo(favoritesPage.getUrl());
 
         List<WebElement> products = favoritesPage.getProducts();
         Boolean isProductExist = favoritesPage.isProductExist(keyword, products);
