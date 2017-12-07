@@ -4,25 +4,26 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class SearchResultPage {
+public class SearchResultPage extends PageUtils {
 
-    WebDriver driver;
+    By resultText = By.cssSelector(".resultText > h1");
+    By breadCrumb = By.cssSelector("#breadCrumb li[itemprop='itemListElement'] > a");
 
     public SearchResultPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public String getBreadCrumb() {
-        return driver.findElement(By.cssSelector("#breadCrumb li[itemprop='itemListElement'] > a")).getText().toLowerCase();
+        return getText(breadCrumb).toLowerCase();
     }
 
     public String getResultText() {
-        return driver.findElement(By.cssSelector(".resultText > h1")).getText().toLowerCase();
+        return getText(resultText).toLowerCase();
     }
 
     public WebElement addFirstProductToFavorites() {
         WebElement followBtn = driver.findElements(By.className("followBtn")).get(0);
-        followBtn.click();
+        click(followBtn);
 
         return followBtn;
     }

@@ -45,7 +45,7 @@ public class FirstTest extends BaseTest {
         Buyer buyer = getBauBuyer();
         HomePage homePage = buyer.login(driver);
 
-        assertThat("When a buyer logged in", homePage.getUserName(), equalTo("Test Bau"));
+        assertThat("When a buyer logged in", homePage.getUserName(), equalTo("test test"));
 
         homePage.search(keyword);
 
