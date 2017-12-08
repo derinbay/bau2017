@@ -14,3 +14,5 @@ target
 *.iws
 *.ipr
 .clover
+allure-report
+allure-results

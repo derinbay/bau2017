@@ -4,6 +4,7 @@ import com.n11.bau.pages.HomePage;
 import com.n11.bau.pages.MyFavoritesPage;
 import com.n11.bau.pages.PageUtils;
 import com.n11.bau.pages.SearchResultPage;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -41,6 +42,7 @@ public class FirstTest extends BaseTest {
     }
 
     @Test
+    @Ignore
     public void shouldLoginAndSearch() {
         Buyer buyer = getBauBuyer();
         HomePage homePage = buyer.login(driver);
