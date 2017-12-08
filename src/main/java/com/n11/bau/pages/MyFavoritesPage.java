@@ -25,11 +25,24 @@ public class MyFavoritesPage extends PageUtils {
     public Boolean isProductExist(String keyword, List<WebElement> products) {
         Boolean isProductExist = false;
         for (WebElement product : products) {
-            isProductExist = product.getText().contains(keyword);
+            isProductExist = product.getText().toLowerCase().contains(keyword);
             if (isProductExist) {
                 break;
             }
         }
         return isProductExist;
+    }
+
+    public void deleteAllProducts() {
+        List<WebElement> products = getProducts();
+        for (int i = 0; i < products.size(); i++) {
+            click(By.className("deleteProFromFavorites"));
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            click(By.className("confirm"));
+        }
     }
 }

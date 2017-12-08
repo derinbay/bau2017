@@ -65,7 +65,8 @@ public class PageUtils {
     }
 
     public void scrollTo(WebElement element) {
-        String script = "scrollTo(" + element.getLocation().x + ", " + element.getLocation().y + ")";
+        int yCoord = element.getLocation().getY() - 200;
+        String script = "scrollTo(" + element.getLocation().x + ", " + yCoord  + ")";
         js(script);
 //        String script2 = "arguments[0].scrollIntoView(true)";
 //        ((JavascriptExecutor) driver).executeScript(script2, element);
@@ -73,5 +74,10 @@ public class PageUtils {
 
     public void scrollTo(By byLocator) {
         scrollTo(driver.findElement(byLocator));
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -42,7 +42,6 @@ public class FirstTest extends BaseTest {
     }
 
     @Test
-    @Ignore
     public void shouldLoginAndSearch() {
         Buyer buyer = getBauBuyer();
         HomePage homePage = buyer.login(driver);
@@ -62,10 +61,12 @@ public class FirstTest extends BaseTest {
 
     @Test
     public void shouldAddToFavorites() {
-        String keyword = "nokia";
+        String keyword = "samsung";
 
         Buyer buyer = getBauBuyer();
         HomePage homePage = buyer.login(driver);
+
+        buyer.clearMyFavorites(driver);
 
         SearchResultPage searchResultPage = homePage.search(keyword);
         WebElement followBtn = searchResultPage.addFirstProductToFavorites();

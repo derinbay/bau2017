@@ -2,6 +2,8 @@ package com.n11.bau;
 
 import com.n11.bau.pages.HomePage;
 import com.n11.bau.pages.LoginPage;
+import com.n11.bau.pages.MyFavoritesPage;
+import com.n11.bau.pages.PageUtils;
 import org.openqa.selenium.WebDriver;
 
 public class Buyer {
@@ -44,5 +46,12 @@ public class Buyer {
         HomePage homePage = new HomePage(driver);
         LoginPage loginPage = homePage.clickLogin();
         return loginPage.login(this);
+    }
+
+    public void clearMyFavorites(WebDriver driver) {
+        MyFavoritesPage favoritesPage = new MyFavoritesPage(driver);
+        PageUtils pageUtils = new PageUtils(driver);
+        pageUtils.goTo(favoritesPage.getUrl());
+        favoritesPage.deleteAllProducts();
     }
 }
