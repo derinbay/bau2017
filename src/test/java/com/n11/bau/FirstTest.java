@@ -71,12 +71,11 @@ public class FirstTest extends BaseTest {
         SearchResultPage searchResultPage = homePage.search(keyword);
         WebElement followBtn = searchResultPage.addFirstProductToFavorites();
 
-        PageUtils utils = new PageUtils(driver);
-        String classAttributes = utils.getAttributes(followBtn, "class");
+        String classAttributes = searchResultPage.getAttributes(followBtn, "class");
         assertTrue(classAttributes.contains("ok"));
 
         MyFavoritesPage favoritesPage = new MyFavoritesPage(driver);
-        utils.goTo(favoritesPage.getUrl());
+        searchResultPage.goTo(favoritesPage.getUrl());
 
         List<WebElement> products = favoritesPage.getProducts();
         Boolean isProductExist = favoritesPage.isProductExist(keyword, products);

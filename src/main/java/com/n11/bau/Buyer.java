@@ -1,10 +1,8 @@
 package com.n11.bau;
 
-import com.n11.bau.pages.HomePage;
-import com.n11.bau.pages.LoginPage;
-import com.n11.bau.pages.MyFavoritesPage;
-import com.n11.bau.pages.PageUtils;
+import com.n11.bau.pages.*;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Buyer {
 
@@ -46,6 +44,12 @@ public class Buyer {
         HomePage homePage = new HomePage(driver);
         LoginPage loginPage = homePage.clickLogin();
         return loginPage.login(this);
+    }
+
+    public void searchAndroid(WebDriver driver, String keyword) {
+        AndroidHomePage androidHomePage = new AndroidHomePage(driver);
+        androidHomePage.search(keyword);
+        androidHomePage.closeTooltip();
     }
 
     public void clearMyFavorites(WebDriver driver) {
